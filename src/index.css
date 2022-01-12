@@ -25,10 +25,9 @@ h1 {
   /* font-family: "Roboto", sans-serif; */
   font-family: "Merriweather", serif;
   text-align: center;
-  margin: 5rem auto;
+  margin: 2rem auto;
   color: #144533;
-  font-size: 6rem;
-  margin-top: 2rem;
+  font-size: 5rem;
 }
 
 h1 span {
@@ -55,7 +54,7 @@ h1 span::before {
 }
 
 h1 span:last-of-type {
-  margin-left: 25px;
+  margin-left: 68px;
 }
 
 h1 span:last-of-type::before {
@@ -66,6 +65,38 @@ h1 span:last-of-type::before {
   height: 2px;
   width: 2px;
   color: #fff;
+}
+
+@media (max-width: 300px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h1 span {
+    font-size: 5rem;
+  }
+  h1 span:last-of-type {
+    margin-left: 85px;
+  }
+}
+@media (max-width: 599px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h1 span {
+    font-size: 3rem;
+  }
+  h1 span:last-of-type {
+    margin-left: 65px;
+  }
+  h1 span::before,
+  h1 span:last-of-type::before {
+    right: 20px;
+    text-shadow: none;
+    font-size: 15px;
+    height: 2px;
+    width: 2px;
+    color: #fff;
+  }
 }
 /* body {
   background-position: center 80px, center center;
@@ -80,3 +111,23 @@ h1 span:last-of-type::before {
     background-size: 400px, 100% 100%;
   }
 } */
+.walt {
+  background-image: url("./images/heisenberg.png");
+}
+
+.walt-spin {
+  animation-name: rota;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: none;
+  animation-direction: normal;
+}
+@keyframes rota {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
