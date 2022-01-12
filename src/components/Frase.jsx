@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-
+import PropTypes from "prop-types";
 const FraseStyle = styled.div`
   background-color: #fff;
   color: #222;
@@ -41,6 +41,12 @@ const Frase = ({ phrase: { quote, author } }) => {
       </Blockquote>
     </FraseStyle>
   );
+};
+/**
+ * objeto que contiene quote y author, datos desde la api.
+ */
+Frase.propTypes = {
+  phrase: PropTypes.object.isRequired,
 };
 
 export default Frase;

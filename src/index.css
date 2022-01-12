@@ -14,15 +14,12 @@ html {
 }
 body {
   margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(to bottom right, #0f4f42, #00722c);
   background-repeat: no-repeat;
   min-height: 100vh;
 }
 
 h1 {
-  /* font-family: "Roboto", sans-serif; */
   font-family: "Merriweather", serif;
   text-align: center;
   margin: 2rem auto;
@@ -98,19 +95,6 @@ h1 span:last-of-type::before {
     color: #fff;
   }
 }
-/* body {
-  background-position: center 80px, center center;
-  background-repeat: no-repeat;
-  background-size: 300px, 100% 100%;
-  display: flex;
-  align-items: flex-end;
-}
-@media (min-width: 768px) {
-  body {
-    align-items: center;
-    background-size: 400px, 100% 100%;
-  }
-} */
 .walt {
   background-image: url("./images/heisenberg.png");
 }
