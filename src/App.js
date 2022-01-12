@@ -1,24 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
 
+const URL_API = "https://breaking-bad-quotes.herokuapp.com/v1/quotes";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <header><h1><span>Br</span>eaking <br /><span>Ba</span>d</h1></header>
+    </>
   );
 }
 
