@@ -39,11 +39,22 @@ margin: 1rem auto;
 filter: saturate(0%);
 mix-blend-mode: soft-light;
 `
-
+const Footer = styled.footer`
+width: 100%;
+background-color: #171717 ;
+font-family:  "Segoe UI";
+color: #fff;
+padding: 1rem;
+text-align: center;
+& > p {
+  text-align: center;
+  padding-bottom: 1rem ;
+}
+`;
 function App() {
   const [cargando, setCargando] = useState(false);
   const [phrase, setPhrase] = useState({});
-  const URL_API = "https://breaking-bad-quotes.herokuapp.com/v1/quotes";
+  const URL_API = "https://api.breakingbadquotes.xyz/v1/quotes";
   const getPhrase = async () => {
     setCargando(true);
     const data = await fetch(URL_API, {
@@ -64,17 +75,24 @@ function App() {
     getPhrase();
   }, [])
   return (
-    <Application>
-      <header><h1><span>Br</span>eaking <br /><span>Ba</span>d</h1></header>
-      <main>
-        {Object.keys(phrase).length && !cargando ? <Frase phrase={phrase} /> : null}
-        {cargando ? <Walt className={cargando ? 'walt walt-spin' : 'walt'}></Walt> : null}
+    <>
+      <Application>
+        <header><h1><span>Br</span>eaking <br /><span>Ba</span>d</h1></header>
+        <main>
+          {Object.keys(phrase).length && !cargando ? <Frase phrase={phrase} /> : null}
+          {cargando ? <Walt className={cargando ? 'walt walt-spin' : 'walt'}></Walt> : null}
 
-        <Boton onClick={getPhrase}>GET A PHRASE</Boton>
+          <Boton onClick={getPhrase}>GET A PHRASE</Boton>
 
 
-      </main>
-    </Application>
+        </main>
+
+      </Application>
+      <Footer>
+        <p>Proyecto realizado por agustínstringa</p>
+        <a rel="noreferrer" target="_blank" href='https://github.com/AgustinStringa/breaking-bad' alt="enlace al codigo fuente">Link to github</a>
+      </Footer>
+    </>
   );
 }
 
