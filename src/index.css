@@ -1,117 +1,24 @@
+@import "tailwindcss";
+
 html {
   box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
-* {
-  margin: 0;
-}
+
 #root {
   width: 100%;
 }
+
 body {
   margin: 0;
   background: linear-gradient(to bottom right, #0f4f42, #00722c);
-  background-repeat: no-repeat;
-  min-height: 100vh;
 }
 
-h1 {
-  font-family: "Merriweather", serif;
-  text-align: center;
-  margin: 2rem auto;
-  color: #144533;
-  font-size: 5rem;
-}
-
-h1 span {
-  margin-top: 0;
-  color: #ffffff;
-  font-family: "Segoe UI", sans-serif;
-  border: 1px solid #00340d;
-  padding: 0px 10px;
-  background: linear-gradient(to bottom right, #133f33, #005e1f);
-  text-shadow: 3px 1px 2px #222222;
-  position: relative;
-  font-size: 7rem;
-}
-
-h1 span::before {
-  content: "32";
-  position: absolute;
-  right: 35px;
-  text-shadow: none;
-  font-size: 25px;
-  height: 2px;
-  width: 2px;
-  color: #fff;
-}
-
-h1 span:last-of-type {
-  margin-left: 68px;
-}
-
-h1 span:last-of-type::before {
-  content: "56";
-  position: absolute;
-  right: 35px;
-  font-size: 25px;
-  height: 2px;
-  width: 2px;
-  color: #fff;
-}
-
-@media (max-width: 300px) {
-  h1 {
-    font-size: 3rem;
-  }
-  h1 span {
-    font-size: 5rem;
-  }
-  h1 span:last-of-type {
-    margin-left: 85px;
-  }
-}
-@media (max-width: 599px) {
-  h1 {
-    font-size: 2rem;
-  }
-  h1 span {
-    font-size: 3rem;
-  }
-  h1 span:last-of-type {
-    margin-left: 65px;
-  }
-  h1 span::before,
-  h1 span:last-of-type::before {
-    right: 20px;
-    text-shadow: none;
-    font-size: 15px;
-    height: 2px;
-    width: 2px;
-    color: #fff;
-  }
-}
 .walt {
   background-image: url("./images/heisenberg.png");
-}
-
-.walt-spin {
-  animation-name: rota;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-fill-mode: none;
-  animation-direction: normal;
-}
-@keyframes rota {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
