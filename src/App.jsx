@@ -2,6 +2,9 @@ import "./index.css";
 import React, { useState, useEffect } from "react";
 import Frase from "./components/Frase";
 import { getPhrases } from "./services/phraseService";
+import { Spinner, LoadingOverlay, Header, Footer } from "../shared";
+
+import logoWalt from "./images/heisenberg.png";
 
 function App() {
   const [cargando, setCargando] = useState(true);
@@ -40,8 +43,15 @@ function App() {
   };
 
   return (
-    <div>
-      <div className="mx-auto flex flex-col items-center text-center">
+    <div className="flex min-h-screen flex-col justify-between">
+      <Header title="Breaking Bad Quotes" variant="dark" />
+      <LoadingOverlay
+        active={cargando}
+        backdrop={true}
+        fullScreen={true}
+        spinner={<Spinner image={logoWalt} size="lg" text="Cargando frase..." />}
+      />
+      <div className="mx-auto flex flex-col items-center">
         <div className="w-4/5 py-4">
           <header>
             <div
@@ -114,41 +124,15 @@ function App() {
             >
               Get a Phrase
             </button>
-            {phrase && !cargando ? <Frase phrase={phrase} /> : null}
-            {cargando ? (
-              <div
-                className="walt 
-                mx-auto
-                my-4
-                h-25
-                w-25 bg-contain bg-center bg-local bg-no-repeat saturate-0
-                mix-blend-soft-light animate-[spin_3s_linear_infinite]"
-              />
-            ) : null}
+            {phrase ? <Frase phrase={phrase} /> : null}
           </main>
         </div>
-        <footer
-          className="w-full        
-          sticky bottom-0
-        bg-[#171717]
-          py-2
-          text-center
-          flex
-          flex-col
-          gap-y-2
-          font-sans text-white"
-        >
-          <p className="">Proyecto realizado por Agustín Stringa</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            href="https://github.com/AgustinStringa/breaking-bad"
-            alt="enlace al codigo fuente"
-          >
-            Link to github
-          </a>
-        </footer>
       </div>
+      <Footer
+        title="Breaking Bad Quotes"
+        description="Generador de frases célebres de la serie Breaking Bad."
+        variant="dark"
+      />
     </div>
   );
 }
