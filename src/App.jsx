@@ -43,7 +43,7 @@ function App() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col justify-between">
+    <div className="flex min-h-dvh flex-col justify-between">
       <Header title="Breaking Bad Quotes" variant="dark" />
       <LoadingOverlay
         active={cargando}
@@ -55,7 +55,7 @@ function App() {
         <div className="w-4/5 py-4">
           <header>
             <div
-              className="flex items-center flex-col mx-auto gap-y-3
+              className="flex items-center flex-col mx-auto gap-y-3 py-3
             text-center font-['Merriweather'] text-[2rem] text-[#144533] min-[600px]:text-[3rem]"
             >
               <div className="flex items-end justify-around">
@@ -110,20 +110,22 @@ function App() {
             </div>
           </header>
           <main className="py-2">
-            <button
-              className="cursor-pointer 
-              border-2
-              my-2
-              border-[#e0ac3e]
-              rounded-xl
-              bg-transparent
-              hover:text-[#0f4f42]
-              hover:bg-[#cacaca]
-              bg-size-[200px] p-2 text-[1.2rem] text-white transition-all duration-300 hover:bg-size-[400px]"
-              onClick={getPhrase}
-            >
-              Get a Phrase
-            </button>
+            <div className="flex flex-col items-center gap-y-2">
+              <button
+                className="cursor-pointer 
+                border-2
+                my-2
+                border-[#e0ac3e]
+                rounded-xl
+                bg-transparent
+                hover:text-[#0f4f42]
+                hover:bg-[#cacaca]
+                bg-size-[200px] p-2 text-[1.2rem] text-white transition-all duration-300 hover:bg-size-[400px]"
+                onClick={getPhrase}
+              >
+                Get a Phrase
+              </button>
+            </div>
             {phrase ? <Frase phrase={phrase} /> : null}
           </main>
         </div>
