@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Frase from "./components/Frase";
 import { getPhrases } from "./services/phraseService";
 import { Spinner, LoadingOverlay, Header, Footer } from "../shared";
-
 import logoWalt from "./images/heisenberg.png";
 
 function App() {
@@ -12,10 +11,9 @@ function App() {
   const [phrases, setPhrases] = useState([]);
 
   const getRandomPhrase = (phraseList) => {
-    if (!phraseList.length) {
+    if (!phraseList || !phraseList.length) {
       return null;
     }
-
     const randomIndex = Math.floor(Math.random() * phraseList.length);
     return phraseList[randomIndex];
   };
@@ -26,6 +24,8 @@ function App() {
         const loadedPhrases = await getPhrases();
         setPhrases(loadedPhrases);
         setPhrase(getRandomPhrase(loadedPhrases));
+      } catch (err) {
+        console.error("Error al cargar frases:", err);
       } finally {
         setCargando(false);
       }
@@ -39,101 +39,86 @@ function App() {
     setTimeout(() => {
       setCargando(false);
       setPhrase(getRandomPhrase(phrases));
-    }, 700);
+    }, 500);
   };
 
   return (
-    <div className="flex min-h-dvh flex-col justify-between">
-      <Header title="Breaking Bad Quotes" variant="dark" />
+    <div className="flex min-h-dvh flex-col justify-between bg-slate-950 text-slate-100">
+      <Header title="Breaking Bad Quotes" theme="breakingBad" />
+
       <LoadingOverlay
         active={cargando}
         backdrop={true}
         fullScreen={true}
         spinner={<Spinner image={logoWalt} size="lg" text="Cargando frase..." />}
       />
-      <div className="mx-auto flex flex-col items-center">
-        <div className="w-4/5 py-4">
-          <header>
-            <div
-              className="flex items-center flex-col mx-auto gap-y-3 py-3
-            text-center font-['Merriweather'] text-[2rem] text-[#144533] min-[600px]:text-[3rem]"
-            >
-              <div className="flex items-end justify-around">
-                <div
-                  className="w-40 
-                  border 
-                  flex
-                  flex-col
-                  border-[#00340d] 
-                  bg-linear-to-br
-                  from-[#133f33] to-[#005e1f]
-                  px-2.5 font-sans
-                  text-white 
-                  text-[112px]"
-                >
-                  <div
-                    className="text-[24px] 
-                  text-shadow-[3px_1px_2px_#222] 
-                  self-end leading-none"
-                  >
-                    36
-                  </div>
-                  <div className="leading-none">Br</div>
+
+      <div className="min-h-full w-full flex-1 px-4 py-8 sm:py-12">
+        <main className="mx-auto w-full max-w-2xl">
+          {/* Logo Químico Icónico */}
+          <header className="mb-8 flex flex-col items-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-4xl font-extrabold tracking-wider text-slate-100 sm:text-5xl">
+              {/* Elemento 35: Br (Bromo) */}
+              <div className="flex items-center gap-1">
+                <div className="flex h-20 w-20 flex-col justify-between rounded-xl border-2 border-emerald-500/80 bg-gradient-to-br from-emerald-900 to-emerald-950 p-2 shadow-lg shadow-emerald-950/60 ring-2 ring-emerald-500/20">
+                  <span className="text-right text-[11px] font-bold text-emerald-300">35</span>
+                  <span className="text-center text-3xl font-black text-white">Br</span>
+                  <span className="text-[9px] font-medium text-emerald-400">79.90</span>
                 </div>
-                <span>eaking</span>
+                <span className="text-3xl font-extrabold tracking-normal text-slate-200 sm:text-4xl">
+                  eaking
+                </span>
               </div>
-              <div className="flex items-end justify-around">
-                <div
-                  className="w-40 
-                  border 
-                  flex
-                  flex-col
-                border-[#00340d] 
-                  bg-linear-to-br
-                 from-[#133f33] to-[#005e1f]
-                  px-2.5 font-sans
-                 text-white 
-                   text-shadow-[3px_1px_2px_#222] 
-                   text-[112px]"
-                >
-                  <div
-                    className="text-[24px] 
-                  text-shadow-[3px_1px_2px_#222] 
-                  self-end leading-none"
-                  >
-                    52
-                  </div>
-                  <div className="leading-none">Ba</div>
+
+              {/* Elemento 56: Ba (Bario) */}
+              <div className="flex items-center gap-1">
+                <div className="flex h-20 w-20 flex-col justify-between rounded-xl border-2 border-emerald-500/80 bg-gradient-to-br from-emerald-900 to-emerald-950 p-2 shadow-lg shadow-emerald-950/60 ring-2 ring-emerald-500/20">
+                  <span className="text-right text-[11px] font-bold text-emerald-300">56</span>
+                  <span className="text-center text-3xl font-black text-white">Ba</span>
+                  <span className="text-[9px] font-medium text-emerald-400">137.3</span>
                 </div>
-                <span>d</span>
+                <span className="text-3xl font-extrabold tracking-normal text-slate-200 sm:text-4xl">
+                  d
+                </span>
               </div>
             </div>
+
+            <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-emerald-400/90">
+              Citas icónicas del universo de Heisenberg
+            </p>
           </header>
-          <main className="py-2">
-            <div className="flex flex-col items-center gap-y-2">
-              <button
-                className="cursor-pointer 
-                border-2
-                my-2
-                border-[#e0ac3e]
-                rounded-xl
-                bg-transparent
-                hover:text-[#0f4f42]
-                hover:bg-[#cacaca]
-                bg-size-[200px] p-2 text-[1.2rem] text-white transition-all duration-300 hover:bg-size-[400px]"
-                onClick={getPhrase}
+
+          {/* Botón CTA y Generador de Frase */}
+          <div className="flex flex-col items-center">
+            <button
+              onClick={getPhrase}
+              className="group inline-flex cursor-pointer items-center gap-2.5 rounded-xl border border-amber-500/40 bg-gradient-to-r from-amber-600 to-amber-700 px-6 py-3.5 text-sm font-bold text-white shadow-lg shadow-amber-950/50 transition-all hover:-translate-y-0.5 hover:border-amber-400 hover:from-amber-500 hover:to-amber-600 hover:shadow-amber-500/25 active:translate-y-0"
+            >
+              <svg
+                className="h-4 w-4 transition-transform group-hover:rotate-180"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                Get a Phrase
-              </button>
-            </div>
-            {phrase ? <Frase phrase={phrase} /> : null}
-          </main>
-        </div>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+              <span>Get a Phrase</span>
+            </button>
+
+            {phrase && <Frase phrase={phrase} />}
+          </div>
+        </main>
       </div>
+
       <Footer
         title="Breaking Bad Quotes"
         description="Generador de frases célebres de la serie Breaking Bad."
-        variant="dark"
+        theme="breakingBad"
       />
     </div>
   );
